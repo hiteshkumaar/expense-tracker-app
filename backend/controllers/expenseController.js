@@ -52,9 +52,9 @@ const getExpenseById = async (req, res) => {
 // @access  Private
 const createExpense = async (req, res) => {
   try {
-    const { title, amount, category, description, expenseDate } = req.body;
+    const { title, amount, category, description, expenseDate, paymentMode } = req.body;
 
-    if (!title || !amount || !category || !expenseDate) {
+    if (!title || !amount || !category || !expenseDate || !paymentMode) {
       return res.status(400).json({ success: false, message: 'Please provide required fields' });
     }
 
@@ -63,6 +63,7 @@ const createExpense = async (req, res) => {
       title,
       amount,
       category,
+      paymentMode,
       description,
       expenseDate,
     });

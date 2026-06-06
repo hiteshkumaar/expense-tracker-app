@@ -20,6 +20,12 @@ const expenseSchema = new mongoose.Schema({
     required: [true, 'Category is required'],
     enum: ['Food', 'Travel', 'Shopping', 'Bills', 'Entertainment', 'Health', 'Other'],
   },
+  paymentMode: {
+    type: String,
+    required: [true, 'Payment mode is required'],
+    enum: ['Cash', 'UPI', 'Credit Card', 'Debit Card'],
+    default: 'Cash',
+  },
   description: {
     type: String,
   },

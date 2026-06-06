@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import api from '../services/api';
 
 const CATEGORIES = ['Food', 'Travel', 'Shopping', 'Bills', 'Entertainment', 'Health', 'Other'];
+const PAYMENT_MODES = ['Cash', 'UPI', 'Credit Card', 'Debit Card'];
 
 const AddEditExpense = () => {
   const { id } = useParams();
@@ -13,6 +14,7 @@ const AddEditExpense = () => {
     title: '',
     amount: '',
     category: 'Food',
+    paymentMode: 'Cash',
     description: '',
     expenseDate: new Date().toISOString().split('T')[0],
   });
@@ -35,6 +37,7 @@ const AddEditExpense = () => {
           title: exp.title,
           amount: exp.amount,
           category: exp.category,
+          paymentMode: exp.paymentMode || 'Cash',
           description: exp.description || '',
           expenseDate: new Date(exp.expenseDate).toISOString().split('T')[0],
         });
@@ -86,45 +89,64 @@ const AddEditExpense = () => {
           />
         </div>
         
-        <div className="form-group">
-          <label>Amount (₹) *</label>
-          <input 
-            type="number" 
-            name="amount"
-            step="0.01"
-            min="0.01"
-            className="form-control" 
-            value={formData.amount} 
-            onChange={handleChange} 
-            required 
-          />
+        <div className="form-row">
+          <div className="form-group">
+            <label>Amount (₹) *</label>
+            <input 
+              type="number" 
+              name="amount"
+              step="0.01"
+              min="0.01"
+              className="form-control" 
+              value={formData.amount} 
+              onChange={handleChange} 
+              required 
+            />
+          </div>
+
+          <div className="form-group">
+            <label>Date *</label>
+            <input 
+              type="date" 
+              name="expenseDate"
+              className="form-control" 
+              value={formData.expenseDate} 
+              onChange={handleChange} 
+              required 
+            />
+          </div>
         </div>
 
-        <div className="form-group">
-          <label>Category *</label>
-          <select 
-            name="category"
-            className="form-control" 
-            value={formData.category} 
-            onChange={handleChange} 
-            required
-          >
-            {CATEGORIES.map(c => (
-              <option key={c} value={c}>{c}</option>
-            ))}
-          </select>
-        </div>
+        <div className="form-row">
+          <div className="form-group">
+            <label>Category *</label>
+            <select 
+              name="category"
+              className="form-control" 
+              value={formData.category} 
+              onChange={handleChange} 
+              required
+            >
+              {CATEGORIES.map(c => (
+                <option key={c} value={c}>{c}</option>
+              ))}
+            </select>
+          </div>
 
-        <div className="form-group">
-          <label>Date *</label>
-          <input 
-            type="date" 
-            name="expenseDate"
-            className="form-control" 
-            value={formData.expenseDate} 
-            onChange={handleChange} 
-            required 
-          />
+          <div className="form-group">
+            <label>Payment Mode *</label>
+            <select 
+              name="paymentMode"
+              className="form-control" 
+              value={formData.paymentMode} 
+              onChange={handleChange} 
+              required
+            >
+              {PAYMENT_MODES.map(mode => (
+                <option key={mode} value={mode}>{mode}</option>
+              ))}
+            </select>
+          </div>
         </div>
 
         <div className="form-group">

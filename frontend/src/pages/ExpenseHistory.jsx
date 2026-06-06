@@ -83,6 +83,7 @@ const ExpenseHistory = () => {
                 <th>Title</th>
                 <th>Category</th>
                 <th>Amount</th>
+                <th>Payment Mode</th>
                 <th>Date</th>
                 <th>Actions</th>
               </tr>
@@ -102,6 +103,7 @@ const ExpenseHistory = () => {
                     </span>
                   </td>
                   <td style={{ fontWeight: 'bold' }}>₹{expense.amount.toFixed(2)}</td>
+                  <td>{expense.paymentMode || 'Cash'}</td>
                   <td>{new Date(expense.expenseDate).toLocaleDateString()}</td>
                   <td style={{ display: 'flex', gap: '0.5rem' }}>
                     <Link to={`/edit-expense/${expense._id}`} className="btn" style={{ background: 'var(--primary)', color: 'white', padding: '0.4rem' }}>

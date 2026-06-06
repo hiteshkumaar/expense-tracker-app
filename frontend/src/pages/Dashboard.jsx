@@ -75,7 +75,7 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div className="dashboard-cards" style={{ gridTemplateColumns: '1fr 1fr' }}>
+      <div className="charts-grid">
         <div className="card" style={{ height: '400px' }}>
           <h3 style={{ marginBottom: '1rem' }}>Category Distribution</h3>
           <ResponsiveContainer width="100%" height="100%">
@@ -125,6 +125,7 @@ const Dashboard = () => {
                 <th>Title</th>
                 <th>Category</th>
                 <th>Amount</th>
+                <th>Mode</th>
                 <th>Date</th>
               </tr>
             </thead>
@@ -134,12 +135,13 @@ const Dashboard = () => {
                   <td>{t.title}</td>
                   <td>{t.category}</td>
                   <td>₹{t.amount.toFixed(2)}</td>
+                  <td>{t.paymentMode || 'Cash'}</td>
                   <td>{new Date(t.expenseDate).toLocaleDateString()}</td>
                 </tr>
               ))}
               {stats.recentTransactions.length === 0 && (
                 <tr>
-                  <td colSpan="4" style={{ textAlign: 'center' }}>No recent transactions</td>
+                  <td colSpan="5" style={{ textAlign: 'center' }}>No recent transactions</td>
                 </tr>
               )}
             </tbody>
