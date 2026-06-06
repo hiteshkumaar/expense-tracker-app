@@ -32,7 +32,7 @@ npm install
 Next, you need to tell the server how to connect to a database. Check the `backend/.env` file and make sure it has your MongoDB connection string. It should look something like this:
 ```env
 PORT=5000
-MONGO_URI=mongodb://127.0.0.1:27017/ExpenseTracker
+MONGO_URI=mongodb+srv://<your_username>:<your_password>@cluster0.zed3eq5.mongodb.net/ExpenseTracker?retryWrites=true&w=majority
 JWT_SECRET=supersecretkey123
 NODE_ENV=development
 ```
