@@ -1,68 +1,60 @@
-# Full Stack Expense Tracker
+# Expense Tracker App
 
-A complete MERN stack Expense Tracker application built for learning and demonstration purposes.
-It features a React frontend (Vite) and an Express + MongoDB backend.
+Hello! Welcome to my Expense Tracker project. I built this app to help people easily track their daily expenses, categorize where their money goes, and view their spending habits through visual charts.
 
-## Features Implemented
-- **User Authentication**: Register, Login, JWT Token Authentication, Protected Routes.
-- **Expense Management**: Add, Edit, Delete, View Expenses.
-- **Search & Filter**: Search expenses by title, filter by category.
-- **Dashboard**: View Total Expenses, Current Month Expenses, Recent Transactions, and Expense Charts (Pie & Bar charts using Recharts).
-- **Dark Mode**: Toggle Dark/Light Mode with preference persisted in Local Storage.
-- **Responsive Design**: Works on mobile and desktop.
+This project is built using the MERN stack (MongoDB, Express, React, and Node.js). 
 
-## Prerequisites
-- Node.js (v16+)
-- MongoDB (running locally or a MongoDB Atlas URI)
+## What can you do with this app?
+- **Create an account & log in**: Everything is securely protected using JWT authentication.
+- **Log your expenses**: You can add new expenses with a title, amount (in ₹), category, payment mode (Cash, UPI, Card), and a date.
+- **Dashboard insights**: When you log in, you get a clean dashboard showing your total spending, a breakdown of categories using pie and bar charts, and your most recent transactions.
+- **Manage history**: You can view your entire expense history, edit past mistakes, or delete records you no longer need.
+- **Dark mode**: There's a built-in toggle for dark/light mode depending on your preference!
 
-## Project Setup
+## Tech Stack
+- **Frontend**: React.js (via Vite) + pure CSS for a clean, custom design. I used the `recharts` library for the dashboard charts.
+- **Backend**: Node.js and Express.js.
+- **Database**: MongoDB (using Mongoose to define the database structure).
 
-1. **Clone/Download** the repository.
-2. **Setup Environment Variables**:
-   In `backend/.env`, configure:
-   ```env
-   PORT=5000
-   MONGO_URI=mongodb://localhost:27017/expense-tracker
-   JWT_SECRET=supersecretkey123
-   NODE_ENV=development
-   ```
+---
 
-### Running the Backend
+## How to run this on your own machine
 
-Open a terminal in the `backend` directory:
+To get this app running on your computer, you'll need to start both the backend server and the frontend React app at the same time.
 
+### 1. Set up the Backend
+First, open your terminal and go into the `backend` folder:
 ```bash
 cd backend
 npm install
-node server.js
 ```
 
-The backend server should start on `http://localhost:5000`.
+Next, you need to tell the server how to connect to a database. Check the `backend/.env` file and make sure it has your MongoDB connection string. It should look something like this:
+```env
+PORT=5000
+MONGO_URI=mongodb://127.0.0.1:27017/ExpenseTracker
+JWT_SECRET=supersecretkey123
+NODE_ENV=development
+```
+*(Note: If you are using MongoDB Atlas in the cloud, just replace the MONGO_URI with your Atlas URL).*
 
-### Running the Frontend
+Finally, start the backend server:
+```bash
+node server.js
+```
+You should see a message saying "MongoDB connected" and "Server running on port 5000".
 
-Open another terminal in the `frontend` directory:
-
+### 2. Set up the Frontend
+Open a **new** terminal window and go into the `frontend` folder:
 ```bash
 cd frontend
 npm install
-npm run dev
 ```
 
-The React app should start on `http://localhost:5173`.
+Start the React app:
+```bash
+npm run dev
+```
+The terminal will give you a local URL (usually `http://localhost:5173`). Open that link in your browser and you're ready to start tracking your expenses!
 
-## API Endpoints
-
-### Auth
-- `POST /api/auth/register`
-- `POST /api/auth/login`
-
-### Expenses
-- `GET /api/expenses` (Query params: `search`, `category`)
-- `POST /api/expenses`
-- `GET /api/expenses/:id`
-- `PUT /api/expenses/:id`
-- `DELETE /api/expenses/:id`
-
-### Dashboard
-- `GET /api/dashboard`
+---
